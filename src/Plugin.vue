@@ -4,13 +4,20 @@
       <li
         v-for="(item, index) in model.items"
         :key="index"
-        class="List__list-item"
+        class="List__list-item uk-flex uk-flex-middle"
       >
         <input
           v-model="model.items[index]"
           :aria-label="`List item ${index}`"
           class="uk-form-small uk-width-1-1"
         >
+        <a
+          class="assets__item-trash"
+          aria-label="Remove item"
+          @click="removeItem(index)"
+        >
+          <i class="uk-icon-minus-circle"></i>
+        </a>
       </li>
     </ol>
     <a
@@ -37,6 +44,9 @@ export default {
   methods: {
     addItem() {
       this.model.items.push(``);
+    },
+    removeItem(index) {
+      this.model.items = this.model.items.filter((_, i) => i !== index);
     },
     initWith() {
       return {
