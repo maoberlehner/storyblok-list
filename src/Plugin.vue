@@ -13,6 +13,13 @@
         >
       </li>
     </ol>
+    <a
+      class="blok__full-btn uk-margin-small-top"
+      @click="addItem"
+    >
+      <i class="uk-icon-plus-circle uk-margin-small-right"/>
+      Add item
+    </a>
   </div>
 </template>
 
@@ -28,6 +35,9 @@ export default {
     },
   },
   methods: {
+    addItem() {
+      this.model.items.push(``);
+    },
     initWith() {
       return {
         items: [``],
