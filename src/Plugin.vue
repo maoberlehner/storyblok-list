@@ -16,11 +16,12 @@
           aria-label="Remove item"
           @click="removeItem(index)"
         >
-          <i class="uk-icon-minus-circle"></i>
+          <i class="uk-icon-minus-circle"/>
         </a>
       </li>
     </ol>
     <a
+      v-if="!limitReached"
       class="blok__full-btn uk-margin-small-top"
       @click="addItem"
     >
@@ -33,6 +34,11 @@
 <script>
 export default {
   mixins: [window.Storyblok.plugin],
+  computed: {
+    limitReached() {
+      return this.options.limit && this.model.items.length >= this.options.limit;
+    },
+  },
   watch: {
     model: {
       deep: true,
