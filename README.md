@@ -8,16 +8,33 @@ Storyblok List is a custom field type plugin for the headless CMS Storyblok. In 
 
 ### Deployment
 
-You can start by cloning this repository and then run the build command and copy and paste the generated code into Storyblok when it's done.
+You can start by cloning this repository and installing its dependencies.
 
 ```bash
 git clone git@github.com:maoberlehner/storyblok-list.git
 cd storyblok-list
 npm install
+```
+
+Because Storyblok plugins share a global namespace, you have to choose a distinct name for your plugin first. Go to `src/Plugin.vue` and change the following line of code.
+
+```diff
+     initWith() {
+       return {
+         items: [``],
+-        plugin: `list`,
++        plugin: `YOUR-DISTINCT-NAME`,
+       };
+     },
+```
+
+Now you can run the build command and copy and paste the generated code into Storyblok when it's done.
+
+```bash
 npm run build
 ```
 
-Next go to the [Plugins page](https://app.storyblok.com/#!/me/plugins) and click the `New` button in the top right. It is important to name your new custom field type plugin `list` for it to work. After creating a new plugin you can copy the contents of `dist/export.js` into the plugin editor.
+Next go to the [Plugins page](https://app.storyblok.com/#!/me/plugins) and click the `New` button in the top right. It is important to choose the same name you specified in the `initWith()` method for your plugin to work. After creating a new plugin you can copy the contents of `dist/export.js` into the plugin editor.
 
 ## Build Setup
 
