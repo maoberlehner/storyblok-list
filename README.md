@@ -43,7 +43,7 @@ Next go to the [Plugins page](https://app.storyblok.com/#!/me/plugins) and click
 npm install
 
 # Serve with hot reload at localhost:8080.
-npm run dev
+npm run serve
 
 # Build for production.
 npm run build
